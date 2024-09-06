@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)1#lseaf1r-u$m%n6xa7hgym+a)q95s1sgf10s!nlf)!tx$36i2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["127.0.0.1",'.herokuapp.com']
 
@@ -87,7 +87,9 @@ WSGI_APPLICATION = 'codestar.wsgi.application'
 # }
 
 DATABASES = {
-    "default":dj_database_url.parse(os.environ.get("DATABASE_URL","postgresql://myuser:mypassword@185.230.162.149:5432/mydatabase"))
+    "default":dj_database_url.parse(
+        os.environ.get("DATABASE_URL", "postgresql://myuser:mypassword@185.230.162.149:5432/mydatabase")
+        )
 }
 
 CSRF_TRUSTED_ORIGINS = [
