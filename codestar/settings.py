@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 from django.contrib.messages import constants as messages
 import dj_database_url
 if os.path.isfile("env.py"):
@@ -113,6 +114,9 @@ DATABASES = {
         os.environ.get("DATABASE_URL", "postgresql://myuser:mypassword@185.230.162.149:5432/mydatabase")
         )
 }
+
+if 'test' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 CSRF_TRUSTED_ORIGINS = [
     "http://*.127.0.0.1:8000/",
